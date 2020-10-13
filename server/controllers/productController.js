@@ -18,25 +18,29 @@ class ProductController {
             })
     }
 
-    static update(req, res, next) {
-        const updateProduct = {
-            name: req.body.name,
-            image_url: req.body.image_url,
-            price: req.body.price,
-            stock: req.body.stock,
-            category: req.body.category
-        }
-        Product.update(updateProduct, {
+    static async update(req, res, next) {
+        try {
+            const id = req.params.id
+            const { name, image_url, price, stock, category } = req.body
+            const data = await Product.update({
+                name,
+                image_url,
+                price,
+                stock,
+                category
+            }, {
                 where: {
-                    id: +req.params.id
-                }
+                    id
+                },
+                returning: true
             })
-            .then(result => {
-                res.status(201).json(result[1][0])
-            })
-            .catch(err => {
-                return next(err)
-            })
+            if (data) {
+                res.status(200).json(data[1])
+            }
+
+        } catch (err) {
+            next(err)
+        }
     }
 
     static delete(req, res, next) {
