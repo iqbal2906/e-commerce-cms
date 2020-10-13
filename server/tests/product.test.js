@@ -225,7 +225,7 @@ describe("Create Failed", () => {
             .then(response => {
                 const { status, body } = response
                 expect(status).toBe(401)
-                expect(body).toHaveProperty("message", "Please login first")
+                expect(body).toHaveProperty("message", "jwt must be provided")
                 done()
             })
             .catch(err => {
@@ -250,7 +250,7 @@ describe("Create Failed", () => {
             .then(response => {
                 const { status, body } = response
                 expect(status).toBe(401)
-                expect(body).toHaveProperty("message", "Not authorize")
+                expect(body).toHaveProperty("message", "jwt malformed")
 
                 done()
             })
@@ -454,7 +454,7 @@ describe("Edit Failed", () => {
             .then(response => {
                 const { status, body } = response
                 expect(status).toBe(401)
-                expect(body).toHaveProperty("message", "Please login first")
+                expect(body).toHaveProperty("message", "jwt must be provided")
                 done()
             })
             .catch(err => {
@@ -480,7 +480,7 @@ describe("Edit Failed", () => {
             .then(response => {
                 const { status, body } = response
                 expect(status).toBe(401)
-                expect(body).toHaveProperty("message", "Not authorize")
+                expect(body).toHaveProperty("message", "jwt malformed")
                 done()
             })
             .catch(err => {
@@ -517,7 +517,7 @@ describe("Testing Delete Product Data", () => {
             .then(response => {
                 const { status, body } = response
                 expect(status).toBe(401)
-                expect(body).toHaveProperty("message", "Please login first")
+                expect(body).toHaveProperty("message", "jwt must be provided")
                 done()
             })
             .catch(err => {
@@ -535,7 +535,7 @@ describe("Testing Delete Product Data", () => {
             .then(response => {
                 const { status, body } = response
                 expect(status).toBe(401)
-                expect(body).toHaveProperty("message", "Not authorize")
+                expect(body).toHaveProperty("message", "jwt malformed")
                 done()
             })
             .catch(err => {

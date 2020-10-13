@@ -14,7 +14,7 @@ const errorHandler = (err, req, res, next) => {
             status = 401;
             break;
         case "JsonWebTokenError":
-            staus = 401;
+            status = 401;
             break;
         case "Forbidden":
             status = 403;
